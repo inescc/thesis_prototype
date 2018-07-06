@@ -1,0 +1,37 @@
+extends layout
+
+block content
+  //- h1= title
+  h2 Edit Voice Transcription Real-Time
+  p
+    label.switch
+      input#rec(type="checkbox")
+      span.slider.round
+    //- span &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    //- label.switch
+    //-   input#tts(type="checkbox")
+    //-   span.slider.round
+  p
+    div#editor
+  
+  div#commands
+    div#cmdError
+      button#cmd1 Can you repeat that?
+      //- content
+      button#cmd2 I did not understand your instruction
+      //- instruction 
+      button#cmd3 I could not find the words you mentioned
+      //- reference 
+      button#cmd4 Where should I insert it?
+      button#cmd5 Which word, phrase or sentence should I delete?
+      button#cmd6 Which word, phrase or sentence should I replace?
+      //- locale
+    div#cmdConfirm
+      button#cmd7 I am about to delete  
+      button#cmd8 I am about to replace
+      button#cmd9 Are these the words you are looking for?  
+      button#cmd10 Is that ok?
+    div#cmdReqTime
+      button#cmd11 Working on it
+
+  script(type='text/javascript', src='/javascripts/test.js')
