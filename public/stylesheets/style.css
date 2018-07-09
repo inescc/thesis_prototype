@@ -94,6 +94,7 @@ input:checked + .slider:before {
   background-color: #228B22;
 }
 /* talkify */
+
 .talkify-audio-control {
   color: white;
 }

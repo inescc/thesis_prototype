@@ -4,7 +4,9 @@ console.log('inside test.js of client');
 var socket = io.connect('http://localhost:7000');
 talkify.config.remoteService.host = 'https://talkify.net';
 talkify.config.remoteService.apiKey = '761f3eca-ca28-4683-a952-704ece6202b9';
-
+talkify.config.ui.audioControls = {
+    enabled: true, //<-- Disable to get the browser built in audio controls
+  };
 // Query DOM
 var btn = document.getElementById('rec');
 
@@ -30,9 +32,23 @@ var quill = new Quill('#editor', {
 var Delta = Quill.import('delta');
 
 /* Speech synthesizer setup — Talkify */
+function sleep(milliseconds) {
+    var start = new Date().getTime();
+    for (var i = 0; i < 1e7; i++) {
+      if ((new Date().getTime() - start) > milliseconds){
+        break;
+      }
+    }
+  }
 
 var player = new talkify.TtsPlayer().enableTextHighlighting();
 player.forceVoice({name: 'David'});
+player.subscribeTo({
+    onPause:function(){
+        console.log('onPause');
+        sleep(1500);
+    }
+});
 // var tts = document.getElementById('tts');
 
 function startRecord() {
@@ -128,6 +144,24 @@ socket.on('rec', function(data){
 
 });
 
+// function hackPlay(readTextArray, i) {
+//     player.playText(readTextArray[i])
+
+//     if(player.isPlaying) {
+//         if(i < readTextArray.length - 2) {
+//             setTimeout( () => {
+//                 // if (i == (readTextArray.length - 2))
+//                     // return
+//                 // hackPlay(i+1)
+//                 console.log('after 2 seconds', i)
+//                 hackPlay(i + 1)
+//             }, 2000)
+//         }
+//         else
+//             return
+//     }
+                 
+// }
 
 document.getElementById('editor').addEventListener('click', (e) => {
     if (e.metaKey) {
@@ -135,8 +169,17 @@ document.getElementById('editor').addEventListener('click', (e) => {
         var readFrom = quill.getSelection().index;
         readFrom = quill.getSelection().index;
         var readText = quill.getText(quill.getText().lastIndexOf(' ', readFrom) + 1);
-        console.log(readText)
-        player.playText(readText);
+        var readTextArray = readText.split('.').slice(0,-1)
+        console.log(readTextArray)
+        // hackPlay(readTextArray, 0)
+       
+        new talkify.playlist() 
+        .begin()
+        .usingPlayer(player)
+        .withTextInteraction()
+        .withElements(readTextArray) //<--Any element you'd like. Leave blank to let Talkify make a good guess
+        .build() //<-- Returns an instance.
+        .play();
     }
     else {
         if (player.isPlaying)
