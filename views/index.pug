@@ -16,22 +16,16 @@ block content
   
   div#commands
     div#cmdError
-      button#cmd1 Can you repeat that?
-      //- content
-      button#cmd2 I did not understand your instruction
-      //- instruction 
-      button#cmd3 I could not find the words you mentioned
-      //- reference 
-      button#cmd4 Where should I insert it?
-      button#cmd5 Which word, phrase or sentence should I delete?
-      button#cmd6 Which word, phrase or sentence should I replace?
-      //- locale
+      button#cmd1 I did not understand your instruction 
+      button#cmd2 I could not find the words you mentioned 
+      button#cmd3 Where should I do that?
+      button#cmd4 Wait, I missed something. I will repeat the last sentence 
+    div#cmdReqConfirm
+      button#cmd5 Are you sure to delete?  
     div#cmdConfirm
-      button#cmd7 I am about to delete  
-      button#cmd8 I am about to replace
-      button#cmd9 Are these the words you are looking for?  
-      button#cmd10 Is that ok?
-    div#cmdReqTime
-      button#cmd11 Working on it
+      button#cmd6 Working on it
+      button#cmd7 I will repeat the last recorded sentence
+
+    
 
   script(type='text/javascript', src='/javascripts/test.js')

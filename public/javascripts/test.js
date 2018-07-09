@@ -154,57 +154,50 @@ document.addEventListener('keydown', (e) => {
 });
 
 document.getElementById('cmd1').addEventListener('click', () => {
-    var audioPrompt = 'Can you repeat that?'
-    player.playText(audioPrompt)
-});
-
-document.getElementById('cmd2').addEventListener('click', () => {
     var audioPrompt = 'I did not understand your instruction'
     player.playText(audioPrompt)
 });
 
-document.getElementById('cmd3').addEventListener('click', () => {
+document.getElementById('cmd2').addEventListener('click', () => {
     var audioPrompt = 'I could not find the words you mentioned'
     player.playText(audioPrompt)
 });
 
+document.getElementById('cmd3').addEventListener('click', () => {
+    var audioPrompt = 'Where should I do that?'
+    player.playText(audioPrompt)
+});
+
 document.getElementById('cmd4').addEventListener('click', () => {
-    var audioPrompt = 'Where should I insert it?'
+    var audioPrompt = 'Wait, I missed something. I will repeat the last sentence'
     player.playText(audioPrompt)
 });
 
 document.getElementById('cmd5').addEventListener('click', () => {
-    var audioPrompt = 'Which word, phrase or sentence should I delete?'
+    var audioPrompt = 'Are you sure to delete?'
     player.playText(audioPrompt)
 });
 
 document.getElementById('cmd6').addEventListener('click', () => {
-    var audioPrompt = 'Which word, phrase or sentence should I replace?'
-    player.playText(audioPrompt)
-});
-
-document.getElementById('cmd7').addEventListener('click', () => {
-    var audioPrompt = 'I am about to delete'
-    player.playText(audioPrompt)
-});
-
-document.getElementById('cmd8').addEventListener('click', () => {
-    var audioPrompt = 'I am about to replace'
-    player.playText(audioPrompt)
-});
-
-document.getElementById('cmd9').addEventListener('click', () => {
-    var audioPrompt = 'Are these the words you are looking for?'
-    player.playText(audioPrompt)
-});
-
-document.getElementById('cmd10').addEventListener('click', () => {
-    var audioPrompt = 'Is that ok?'
-    player.playText(audioPrompt)
-});
-
-document.getElementById('cmd11').addEventListener('click', () => {
     var audioPrompt = 'Working on it'
     player.playText(audioPrompt)
 });
 
+document.getElementById('cmd7').addEventListener('click', () => {
+    var audioPrompt = 'I will repeat the last recorded sentence'
+    player.playText(audioPrompt)
+});
+
+
+
+
+// beep sound 
+
+// function play(){
+//     var audio = document.getElementById("audio");
+//     audio.play();
+// }
+
+// document.getElementById('beep').addEventListener('click', () => {
+//     play();
+// });

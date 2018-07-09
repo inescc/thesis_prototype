@@ -73,17 +73,26 @@ input:checked + .slider:before {
 
 /* Commands styling */
 #commands {
-  padding: 30px 0;
+  padding: 10px 0;
 }
 #commands button {
   border: 0px;
   font-size: 14px;
+  font-weight: 500;
   padding: 10px;
-  background-color: #eee;
   border-radius: 5px;
   margin: 5px;
+  color: #ffffff;
 }
-
+#commands #cmdError button {
+  background-color: #CD5C5C;
+}
+#commands #cmdReqConfirm button {
+  background-color: #4169E1;
+}
+#commands #cmdConfirm button {
+  background-color: #228B22;
+}
 /* talkify */
 .talkify-audio-control {
   color: white;
