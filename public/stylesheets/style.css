@@ -85,6 +85,7 @@ input:checked + .slider:before {
 }
 
 /* talkify */
+
 .talkify-audio-control {
   color: white;
 }
