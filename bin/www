@@ -3,7 +3,7 @@
 /**
  * Module dependencies.
  */
-
+// console.log('server inside')
 var app = require('../app');
 var debug = require('debug')('cr-setup:server');
 var http = require('http');

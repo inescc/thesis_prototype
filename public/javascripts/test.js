@@ -43,10 +43,12 @@ function sleep(milliseconds) {
 
 var player = new talkify.TtsPlayer().enableTextHighlighting();
 player.forceVoice({name: 'David'});
+// player.setRate = -5;
+console.log('this is just to test if it is using this code')
 player.subscribeTo({
     onPause:function(){
         console.log('onPause');
-        sleep(1500);
+        // sleep(0);
     }
 });
 // var tts = document.getElementById('tts');
@@ -169,17 +171,18 @@ document.getElementById('editor').addEventListener('click', (e) => {
         var readFrom = quill.getSelection().index;
         readFrom = quill.getSelection().index;
         var readText = quill.getText(quill.getText().lastIndexOf(' ', readFrom) + 1);
-        var readTextArray = readText.split('.').slice(0,-1)
-        console.log(readTextArray)
+        // // var readTextArray = readText.split('.').slice(0,-1)
+        // console.log(readTextArray)
         // hackPlay(readTextArray, 0)
-       
-        new talkify.playlist() 
-        .begin()
-        .usingPlayer(player)
-        .withTextInteraction()
-        .withElements(readTextArray) //<--Any element you'd like. Leave blank to let Talkify make a good guess
-        .build() //<-- Returns an instance.
-        .play();
+        // player.setRate = -5;
+        player.setRate(-3).playText(readText);
+        // new talkify.playlist() 
+        // .begin()
+        // .usingPlayer(player)
+        // .withTextInteraction()
+        // .withElements(readTextArray) //<--Any element you'd like. Leave blank to let Talkify make a good guess
+        // .build() //<-- Returns an instance.
+        // .play();
     }
     else {
         if (player.isPlaying)
@@ -197,7 +200,7 @@ document.addEventListener('keydown', (e) => {
 });
 
 document.getElementById('cmd1').addEventListener('click', () => {
-    var audioPrompt = 'I did not understand your instruction'
+    var audioPrompt = 'Sorry, I did not understand your instruction'
     player.playText(audioPrompt)
 });
 
@@ -222,11 +225,21 @@ document.getElementById('cmd5').addEventListener('click', () => {
 });
 
 document.getElementById('cmd6').addEventListener('click', () => {
-    var audioPrompt = 'Working on it'
+    var audioPrompt = 'Ok'
     player.playText(audioPrompt)
 });
 
 document.getElementById('cmd7').addEventListener('click', () => {
+    var audioPrompt = 'Ok, I have deleted that'
+    player.playText(audioPrompt)
+});
+
+document.getElementById('cmd8').addEventListener('click', () => {
+    var audioPrompt = 'Working on it'
+    player.playText(audioPrompt)
+});
+
+document.getElementById('cmd9').addEventListener('click', () => {
     var audioPrompt = 'I will repeat the last recorded sentence'
     player.playText(audioPrompt)
 });
